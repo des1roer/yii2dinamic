@@ -36,7 +36,7 @@ class m160412_112956_init_dinamic extends Migration {
         ]);
 
         $this->createIndex('idx-unit_id', 'data', 'unit_id');
-        $this->addForeignKey('fk-unit_id', 'data', 'unit_id', 'template', 'id', 'CASCADE');
+        $this->addForeignKey('fk-unit_id', 'data', 'unit_id', 'unit', 'id', 'CASCADE');
 
         $this->createIndex('idx-element_id', 'data', 'element_id');
         $this->addForeignKey('fk-element_id', 'data', 'element_id', 'element', 'id', 'CASCADE');
