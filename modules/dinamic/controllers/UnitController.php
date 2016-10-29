@@ -110,8 +110,8 @@ class UnitController extends Controller {
             {
                 if (!empty($value))
                     $command = Yii::$app->db->createCommand("  
-                            INSERT INTO data (unit_id, element_id, value) VALUES ($model->id, $key, $value)  
-                            ON DUPLICATE KEY UPDATE value = $value");
+                            INSERT INTO data (unit_id, element_id, value) VALUES ($model->id, $key, '$value')  
+                            ON DUPLICATE KEY UPDATE value = '$value'");
                 else
                     $command = Yii::$app->db->createCommand("  
                             DELETE FROM  data where unit_id = $model->id and element_id = $key");

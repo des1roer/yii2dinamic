@@ -17,6 +17,8 @@ $temp = Unit::template;
 $model = new Unit();
 $mod = $model->getAll_elem($temp);
 
+if (empty($mod)) return  Yii::$app->response->redirect(\yii\helpers\Url::to(['./']));
+    
 $arr_cols = [];
 $arr_cols[] = ['class' => 'yii\grid\SerialColumn'];
 $arr_cols[] = 'name';

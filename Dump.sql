@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.22, for Win32 (x86)
+-- MySQL dump 10.13  Distrib 5.7.12, for Win32 (AMD64)
 --
 -- Host: localhost    Database: yii2dinamic
 -- ------------------------------------------------------
--- Server version	5.6.26
+-- Server version	5.5.50
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -36,19 +36,10 @@ CREATE TABLE `data` (
   PRIMARY KEY (`unit_id`,`element_id`),
   KEY `idx-unit_id` (`unit_id`),
   KEY `idx-element_id` (`element_id`),
-  CONSTRAINT `fk-element_id` FOREIGN KEY (`element_id`) REFERENCES `element` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `fk-unit_id` FOREIGN KEY (`unit_id`) REFERENCES `template` (`id`) ON DELETE CASCADE
+  CONSTRAINT `data_fk1` FOREIGN KEY (`unit_id`) REFERENCES `unit` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk-element_id` FOREIGN KEY (`element_id`) REFERENCES `element` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `data`
---
-
-LOCK TABLES `data` WRITE;
-/*!40000 ALTER TABLE `data` DISABLE KEYS */;
-/*!40000 ALTER TABLE `data` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `element`
@@ -61,17 +52,8 @@ CREATE TABLE `element` (
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `element`
---
-
-LOCK TABLES `element` WRITE;
-/*!40000 ALTER TABLE `element` DISABLE KEYS */;
-/*!40000 ALTER TABLE `element` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `migration`
@@ -87,16 +69,6 @@ CREATE TABLE `migration` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `migration`
---
-
-LOCK TABLES `migration` WRITE;
-/*!40000 ALTER TABLE `migration` DISABLE KEYS */;
-INSERT INTO `migration` VALUES ('m000000_000000_base',1460461924),('m160412_112956_init_dinamic',1460461935);
-/*!40000 ALTER TABLE `migration` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `template`
 --
 
@@ -107,17 +79,8 @@ CREATE TABLE `template` (
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `template`
---
-
-LOCK TABLES `template` WRITE;
-/*!40000 ALTER TABLE `template` DISABLE KEYS */;
-/*!40000 ALTER TABLE `template` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `template_has_element`
@@ -137,15 +100,6 @@ CREATE TABLE `template_has_element` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `template_has_element`
---
-
-LOCK TABLES `template_has_element` WRITE;
-/*!40000 ALTER TABLE `template_has_element` DISABLE KEYS */;
-/*!40000 ALTER TABLE `template_has_element` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `unit`
 --
 
@@ -159,17 +113,8 @@ CREATE TABLE `unit` (
   UNIQUE KEY `name` (`name`),
   KEY `idx-template_id_u` (`template_id`),
   CONSTRAINT `fk-template_id_u` FOREIGN KEY (`template_id`) REFERENCES `template` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `unit`
---
-
-LOCK TABLES `unit` WRITE;
-/*!40000 ALTER TABLE `unit` DISABLE KEYS */;
-/*!40000 ALTER TABLE `unit` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -180,4 +125,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-12 16:56:09
+-- Dump completed on 2016-10-29 11:53:58
