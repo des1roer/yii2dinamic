@@ -42,7 +42,7 @@ AppAsset::register($this);
                             ['label' => 'unit', 'url' => ['/dinamic/unit']],
                             ['label' => 'template', 'url' => ['/dinamic/template']],
                             ['label' => 'element', 'url' => ['/dinamic/element']],
-                            ['label' => 'data', 'url' => ['/dinamic/data']],
+                            //['label' => 'data', 'url' => ['/dinamic/data']],
                         ]],
                     Yii::$app->user->isGuest ?
                             ['label' => 'Login', 'url' => ['/site/login']] : // or ['/user/login-email']
